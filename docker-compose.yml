@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  kinetix-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_SOMNIA_RPC_URL=https://dream-rpc.somnia.network
+      - NEXT_PUBLIC_DREAMDEX_WS_URL=wss://api.dreamdex.exchange/ws/v1
+      - NEXT_PUBLIC_STORK_API_URL=https://rest.jp.stork-oracle.network/v1
+      - EXECUTION_ENV=production
+    restart: unless-stopped
+```
+
+---
+
+### Verification and Demo Walkthrough
+
+#### 1. Zero-Friction Local Testing
+```bash
+# Clone and enter directory
+npm install
+
+# Run the complete web terminal
+npm run dev
+# Terminal opens immediately at http://localhost:3000
+```
+
+#### 2. Running the Standalone CLI Daemon
+```bash
+# Runs the Almgren-Chriss continuous math engine against Stork feeds directly in node
+npm run daemon
